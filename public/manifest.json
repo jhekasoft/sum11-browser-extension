@@ -16,5 +16,11 @@
     "activeTab",
     "tabs",
     "scripting"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon_sum@efremod.dev",
+      "strict_min_version": "109.0"
+    }
+  }  
 }
