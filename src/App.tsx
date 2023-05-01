@@ -12,7 +12,7 @@ function App() {
     event.preventDefault();
 
     // Open new tab
-    chrome.tabs && chrome.tabs.create({url: `http://sum.in.ua/?swrd=${keyword}`, selected: true, active: true});
+    chrome.tabs && chrome.tabs.create({url: `http://sum.in.ua/?swrd=${keyword}`, active: true});
   }
 
   async function getActiveTab() {
