@@ -1,7 +1,7 @@
 {
   "name": "СУМ-11: словник української мови",
   "description": "СУМ-11: словник української мови. Використовується сайт sum.in.ua.",
-  "version": "0.1",
+  "version": "0.3",
   "manifest_version": 3,
   "action": {
       "default_popup": "index.html",
@@ -17,10 +17,17 @@
     "tabs",
     "scripting"
   ],
+  "host_permissions": [
+    "http://sum.in.ua/*"
+  ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "addon_sum@efremod.dev",
+      "id": "addon_sum@efremov.dev",
+      "strict_min_version": "109.0"
+    },
+    "gecko_android": {
+      "id": "addon_sum@efremov.dev",
       "strict_min_version": "109.0"
     }
-  }  
+  }
 }
