@@ -20,12 +20,11 @@
   "host_permissions": [
     "http://sum.in.ua/*"
   ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'"
+  },
   "browser_specific_settings": {
     "gecko": {
-      "id": "addon_sum@efremov.dev",
-      "strict_min_version": "109.0"
-    },
-    "gecko_android": {
       "id": "addon_sum@efremov.dev",
       "strict_min_version": "109.0"
     }

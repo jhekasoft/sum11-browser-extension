@@ -72,7 +72,7 @@ function App() {
         }
       }, async (res) => {
         if (res.length) {
-          const selectedText = res[0].result;
+          const selectedText = res[0]?.result;
           setKeyword(selectedText);
           searchArticle(selectedText)
         }

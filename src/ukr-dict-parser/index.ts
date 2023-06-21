@@ -32,6 +32,11 @@ export async function getExplanation(keyword: string): Promise<Article | null> {
     }
 
     return null
+  })
+  .catch(function (error) {
+    console.log(error);
+
+    return null;
   });
 
   return result;
