@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from './logo.png';
-// import logo from './sum11.jpg';
 import './App.css';
-import { getExplanation } from './ukr-dict-parser';
-import { Article } from './ukr-dict-parser/interfaces/Article';
+import { Article, getExplanation } from 'sum11';
 
 function App() {
   // const [url, setUrl] = useState<string>('');
