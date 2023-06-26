@@ -1,30 +1,37 @@
 {
   "name": "sum-chrome-extension",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sum11": "^0.1.9"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "@types/chrome": "^0.0.233",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.24",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "react-scripts": "5.0.1",
+    "source-map-explorer": "^2.5.3",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "pack": "npm run pack-chrome",
+    "pack-chrome": "npm run build-chrome && rm -f ./build/chrome-extension.zip && zip -r ./build/chrome-extension.zip ./build/chrome/*",
+    "build": "npm run build-chrome && npm run build-firefox",
+    "build-chrome": "GENERATE_SOURCEMAP=false BUILD_PATH='./build/chrome' INLINE_RUNTIME_CHUNK=false react-scripts build && rm ./build/chrome/manifest-firefox.json",
+    "build-firefox": "GENERATE_SOURCEMAP=false BUILD_PATH='./build/firefox' INLINE_RUNTIME_CHUNK=false react-scripts build && rm ./build/firefox/manifest.json && mv ./build/firefox/manifest-firefox.json ./build/firefox/manifest.json",
     "start": "react-scripts start",
-    "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze-chrome": "source-map-explorer 'build/chrome/static/js/*.js'",
+    "analyze-firefox": "source-map-explorer 'build/firefox/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": [
