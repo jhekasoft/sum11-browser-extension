@@ -7,6 +7,8 @@ function App() {
   // const [url, setUrl] = useState<string>('');
   const [keyword, setKeyword] = useState('');
   const [article, setArticle] = useState<Article | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function getActiveTab() {
     let queryOptions = { active: true, currentWindow: true };
@@ -19,8 +21,19 @@ function App() {
       return;
     }
 
-    const article = await getExplanation(keyword);
-    setArticle(article);
+    setError(null);
+    setIsLoading(true);
+
+    getExplanation(keyword)
+    .then(article => {
+      setArticle(article);
+    })
+    .catch(error => {
+      setError(error.message)
+      console.log(error)
+    }).finally(() => {
+      setIsLoading(false);
+    });
   }
 
   async function submitFormHandler(event: React.FormEvent<HTMLFormElement>) {
@@ -39,13 +52,37 @@ function App() {
   }
 
   async function submitLinkHandler() {
-    // Open new tab
-    chrome.tabs && chrome.tabs.create({url: `http://sum.in.ua/?swrd=${keyword}`, active: true});
+    if (!keyword) {
+      return;
+    }
+
+    setError(null);
+    setIsLoading(true);
+
+    getExplanation(keyword)
+    .then(article => {
+      setIsLoading(false);
+
+      if (!article?.url) {
+        return;
+      }
+  
+      // Open new tab
+      chrome.tabs && chrome.tabs.create({url: article?.url, active: true});
+    })
+    .catch(error => {
+      setError(error.message)
+      console.log(error)
+    }).finally(() => {
+      setIsLoading(false);
+    });
   }
 
   function clearHandler() {
     setKeyword('');
     setArticle(null);
+    setError(null);
+    setIsLoading(false);
   }
 
   function alternativeClickHandler(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
@@ -89,20 +126,34 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
         )}
         <p>
-          СУМ-11. Словник української мови
+          Словник української мови (СУМ-11)
         </p>
-        <form onSubmit={submitFormHandler}>
-          <input
-            value={keyword}
-            onChange={changeKeywordHandler}
-            type="search"
-            placeholder="Введіть чи виділіть слово"
-            className="input"
-            autoFocus
-          />
-          <button type="submit" className="btn" ref={refSubmitButtom}>Шукати</button>
-          <button type="button" className="btn" title="Перейти за посиланням" onClick={submitLinkHandler}>🔗</button>
-        </form>
+        { !isLoading && (
+          <form onSubmit={submitFormHandler}>
+            <input
+              value={keyword}
+              onChange={changeKeywordHandler}
+              type="search"
+              placeholder="Введіть чи виділіть слово"
+              className="input"
+              autoFocus
+            />
+            <button type="submit" className="btn" ref={refSubmitButtom}>Шукати</button>
+            <button type="button" className="btn" title="Перейти за посиланням" onClick={submitLinkHandler}>🔗</button>
+          </form>
+        )}
+
+        {/* Loader */}
+        { isLoading && (
+          <span className="loader"></span>
+        )}
+
+        {/* Error */}
+        { error && (
+          <div className="error">
+            { error }
+          </div>
+        )}
 
         {/* Article */}
         { article && article.text && (

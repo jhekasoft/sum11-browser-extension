@@ -1,11 +1,11 @@
 {
-  "name": "СУМ-11: словник української мови",
-  "description": "СУМ-11: словник української мови. Використовується сайт sum.in.ua.",
+  "name": "Словник української мови (СУМ-11)",
+  "description": "Словник української мови (СУМ-11). Використовується сайт sum.in.ua.",
   "version": "0.3.2",
   "manifest_version": 3,
   "action": {
       "default_popup": "index.html",
-      "default_title": "СУМ-11"
+      "default_title": "Словник української мови"
   },
   "icons": {
     "16": "logo192.png",
@@ -17,7 +17,8 @@
     "scripting"
   ],
   "host_permissions": [
-    "http://sum.in.ua/*"
+    "http://sum.in.ua/*",
+    "https://sum.in.ua/*"
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'"
