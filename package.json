@@ -1,6 +1,6 @@
 {
   "name": "sum11-browser-extension",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
