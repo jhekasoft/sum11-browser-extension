@@ -106,7 +106,7 @@ function App() {
           return selection ? selection.toString() : "";
         }
       }, async (res) => {
-        if (res.length) {
+        if (res && res.length) {
           const selectedText = res[0]?.result;
           setKeyword(selectedText);
           searchArticle(selectedText)
