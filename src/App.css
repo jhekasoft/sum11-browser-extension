@@ -40,6 +40,10 @@ a {
   width: 100%;
 }
 
+.App .article-definition {
+  white-space: pre-wrap;
+}
+
 .App .error {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
@@ -120,4 +124,45 @@ a {
   to {
     transform: rotate(360deg);
   }
+}
+
+.styled-input {
+  padding: 4px 6px;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding/border are included in width calculation */
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.styled-input:focus {
+  border-color: #61dafb; /* Highlight border on focus */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(4, 109, 170, 0.5);
+}
+
+.styled-button {
+  background-color: #555;
+  border: 2px solid #ccc;
+  color: white; /* White text */
+  padding: 4px 6px;
+  text-align: center;
+  text-decoration: none; /* Remove underline for <a> elements */
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.styled-button:hover {
+  background-color: #439ab2; /* Darker green on hover */
+  box-shadow: 0 0 5px rgba(4, 109, 170, 0.5);
+}
+
+.styled-button:active {
+    transform: scale(0.98); /* Subtle press effect when clicked */
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }

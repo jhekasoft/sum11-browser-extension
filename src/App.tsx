@@ -135,11 +135,11 @@ function App() {
               onChange={changeKeywordHandler}
               type="search"
               placeholder="Введіть чи виділіть слово"
-              className="input"
+              className="input styled-input"
               autoFocus
             />
-            <button type="submit" className="btn" ref={refSubmitButtom}>Шукати</button>
-            <button type="button" className="btn" title="Перейти за посиланням" onClick={submitLinkHandler}>🔗</button>
+            <button type="submit" className="btn styled-button" ref={refSubmitButtom}>Шукати</button>
+            <button type="button" className="btn styled-button" title="Перейти за посиланням" onClick={submitLinkHandler}>🔗</button>
           </form>
         )}
 
@@ -157,7 +157,7 @@ function App() {
 
         {/* Article */}
         { article && article.text && (
-          <div className="article">
+          <div className="article article-definition">
             { article.text }
           </div>
         )}
@@ -186,11 +186,11 @@ function App() {
         <p>
           <a
             className="App-link"
-            href="https://efremov.dev"
+            href="https://jhekasoft.github.io/projects?utm_source=sum11-browser-extension&utm_medium=extension&utm_campaign=what-is-this"
             target="_blank"
             rel="noopener noreferrer"
           >
-            efremov.dev
+            Що це?
           </a>
         </p>
       </header>
