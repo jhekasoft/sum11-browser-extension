@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { AxiosError } from 'axios';
 import logo from './logo.png';
 import './App.css';
 import { Article, getExplanation } from 'sum11';
@@ -29,8 +30,17 @@ function App() {
       setArticle(article);
     })
     .catch(error => {
+      setArticle(null);
+
+      const axiosError = error as AxiosError;
+      if (axiosError.response) {
+        if (axiosError.response.status === 404) {
+          setError("Слово не знайдено. Вибачте. 😿");
+          return;
+        }
+      }
+
       setError(error.message)
-      console.log(error)
     }).finally(() => {
       setIsLoading(false);
     });
@@ -186,11 +196,11 @@ function App() {
         <p>
           <a
             className="App-link"
-            href="https://jhekasoft.github.io/projects?utm_source=sum11-browser-extension&utm_medium=extension&utm_campaign=what-is-this"
+            href="https://sum11.pp.ua/about"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Що це?
+            Про проєкт
           </a>
         </p>
       </header>
