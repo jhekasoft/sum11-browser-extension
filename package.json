@@ -1,11 +1,11 @@
 {
   "name": "sum11-browser-extension",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sum11": "^0.6.0"
+    "sum11": "^0.6.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
