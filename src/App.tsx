@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AxiosError } from 'axios';
-import logo from './logo.png';
 import './App.css';
 import { Article, getExplanation } from 'sum11';
 
@@ -133,7 +132,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         { !article && (
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src="/logo192.png" className="App-logo" alt="logo" />
         )}
         <p>
           Словник української мови (СУМ-11)
